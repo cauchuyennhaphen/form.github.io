@@ -1,39 +1,58 @@
-function sendEmail(event) {
-    event.preventDefault(); // Ngăn chặn hành vi gửi mặc định của form
-  
-    // Lấy thông tin từ các trường input
-    var name = document.getElementById("name").value;
-    var email = document.getElementById("email").value;
-    var namsinh = document.getElementById("number").value;
-    var truonghoc = document.getElementById("dropdown").value;
-    var khoahoc = document.querySelector('select[name="khoahoc"]').value;
-    var cauhoi = document.querySelector('.text-input').value;
-    var loaihutro = document.querySelector('input[name="loaihotro"]:checked').value;
-  
-    // Tạo một object chứa các thông tin
-    var templateParams = {
-      from_name: name,
-      reply_to: email,
-      namsinh: namsinh,
-      truonghoc: truonghoc,
-      khoahoc: khoahoc,
-      cauhoi: cauhoi,
-      loaihotro: loaihotro
-    };
-  
-    // Gửi email bằng EmailJS
-    emailjs.sendForm('service_449yvds', 'template_e6qjour', '#survey-form', templateParams)
-      .then(function(response) {
-        console.log('SUCCESS!', response.status, response.text);
-        alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất có thể.');
-        document.getElementById('survey-form').reset(); // Xóa dữ liệu đã nhập trong form
-      }, function(error) {
-        console.log('FAILED...', error);
-        if (error.status === 0) {
-          alert("Không thể kết nối đến máy chủ. Vui lòng kiểm tra kết nối internet của bạn.");
-        } else {
-          alert("Có lỗi xảy ra khi gửi email. Vui lòng thử lại.");
-        }
-      });
+document.getElementById("form").addEventListener("submit", function (e) {
+  e.preventDefault(); // Prevent the default form submission
+  document.getElementById("message").textContent = "Submitting..";
+  document.getElementById("message").style.display = "block";
+  document.getElementById("submit-button").disabled = true;
+
+  // Collect the form data
+  var formData = new FormData(this);
+  var keyValuePairs = [];
+  for (var pair of formData.entries()) {
+    keyValuePairs.push(pair[0] + "=" + pair[1]);
   }
-  
+
+  var formDataString = keyValuePairs.join("&");
+
+  // Send a POST request to your Google Apps Script
+  fetch(
+    "https://script.google.com/macros/s/AKfycbw2ZbXcZvoly-kwjGf9404KfbvJ0BBvcm_Mt8VtcdRhkqnDBf1-lV0d8uCosrZ4k2DThQ/exec",
+    {
+      redirect: "follow",
+      method: "POST",
+      body: formDataString,
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+    }
+  )
+    .then(function (response) {
+      // Check if the request was successful
+      if (response) {
+        return response; // Assuming your script returns JSON response
+      } else {
+        throw new Error("Failed to submit the form.");
+      }
+    })
+    .then(function (data) {
+      // Display a success message
+      document.getElementById("message").textContent =
+        "Data submitted successfully!";
+      document.getElementById("message").style.display = "block";
+      document.getElementById("message").style.backgroundColor = "green";
+      document.getElementById("message").style.color = "beige";
+      document.getElementById("submit-button").disabled = false;
+      document.getElementById("form").reset();
+
+      setTimeout(function () {
+        document.getElementById("message").textContent = "";
+        document.getElementById("message").style.display = "none";
+      }, 2600);
+    })
+    .catch(function (error) {
+      // Handle errors, you can display an error message here
+      console.error(error);
+      document.getElementById("message").textContent =
+        "An error occurred while submitting the form.";
+      document.getElementById("message").style.display = "block";
+    });
+});

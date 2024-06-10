@@ -2,11 +2,6 @@
 <html lang="vi">
   <head>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-      (function(){
-          emailjs.init("sY2S7J0Irq1rbji9B");
-      })();
-    </script>
 
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -31,15 +26,27 @@
         <p id="description">Hãy đặt câu hỏi của các bạn cho chúng mình hoặc Bày tỏ ý kiến của bạn.</p>
       </header>
       <form id="survey-form"  method="POST" onsubmit="sendEmail(event)">
-        <div class="form-group">
-          <label for="name" id="name-label">Họ và tên</label>
-          <input id="name" name="name" type="text" placeholder="Điền tên của bạn vào đây" required class="form-control" />
-        </div>
 
         <div class="form-group">
           <label for="email" id="email-label">Email của bạn</label>
-          <input id="email" name="email" type="email" placeholder="Điền email của bạn vào đây" required class="form-control" />
+          <input id="email" name="Email" type="email" placeholder="Điền email của bạn vào đây" required class="form-control" />
         </div>
+
+        <div class="form-group">
+          <label for="name" id="name-label">Họ và tên</label>
+          <input id="name" name="Name" type="text" placeholder="Điền tên của bạn vào đây" required class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <p>Bạn là </p>
+          <select id="dropdown" name="Gender" class="form-control">
+            <option value="">Lựa chọn giới tính của bạn:</option>
+            <option value="Nam">Nam</option>
+            <option value="Nu">Nữ</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
         <div class="form-group">
           <label for="number" id="number-label"
             >Năm sinh
@@ -47,7 +54,7 @@
           </label>
           <input
             id="number"
-            name="namsinh"
+            name="Namsinh"
             type="number"
             min="1990"
             max="2018"
@@ -59,7 +66,7 @@
 
         <div class="form-group">
           <p>Trường học của bạn ?</p>
-          <select id="dropdown" name="truonghoc" class="form-control">
+          <select id="dropdown" name="Truonghoc" class="form-control">
             <option value="">Select current role</option>
             <option value="Phenikaa">Học tại Trường Phenikaa</option>
             <option value="Other">Học ở các trường khác.</option>
@@ -68,7 +75,7 @@
 
         <div class="form-group">
           <p>Bạn là sinh viên khoá nào tại trường?</p>
-          <select id="dropdown" name="khoahoc" class="form-control">
+          <select id="dropdown" name="Khoahoc" class="form-control">
             <option value="">Select current role</option>
             <option value="K14">K14</option>
             <option value="K15">K15</option>
@@ -80,14 +87,14 @@
 
         <div class="form-group">
           <p>Câu hỏi cảu bạn là:</p>
-          <textarea class="text-input" name="cauhoi" placeholder="Viết câu hỏi của bạn vào đây"></textarea>
+          <textarea class="text-input" name="Question" placeholder="Viết câu hỏi của bạn vào đây"></textarea>
         </div>
 
         <div class="form-group">
           <p>Bạn muốn mình hỗ trợ điều gì?</p>
-          <label><input class="style-radio" type="radio" name="loaihotro" value="giai_dap_thac_mac" checked />Hỗ trợ giải đáp thắc mắc.</label>
-          <label><input class="style-radio" type="radio" name="loaihotro" value="CFS" />Viết CFS cho bản thân.</label>
-          <label><input class="style-radio" type="radio" name="loaihotro" value="Support" />Góp ý cho đội ngũ Admin.</label>
+          <label><input class="style-radio" type="radio" name="Loaihotro" value="giai_dap_thac_mac" checked />Hỗ trợ giải đáp thắc mắc.</label>
+          <label><input class="style-radio" type="radio" name="Loaihotro" value="CFS" />Viết CFS cho bản thân.</label>
+          <label><input class="style-radio" type="radio" name="Loaihotro" value="Support" />Góp ý cho đội ngũ Admin.</label>
         </div>
 
         <input id="submit" type="submit" value="Submit" class="btn-submit" >
