@@ -25,21 +25,26 @@
         <h1 id="title">Page: Câu chuyện Nhà Phen</h1>
         <p id="description">Hãy đặt câu hỏi của các bạn cho chúng mình hoặc Bày tỏ ý kiến của bạn.</p>
       </header>
-      <form id="survey-form"  method="POST" onsubmit="sendEmail(event)">
+      <form id="survey-form"  action="https://formspree.io/f/mpzvgvev" method="POST" name="contact-form">
 
         <div class="form-group">
           <label for="email" id="email-label">Email của bạn</label>
-          <input id="email" name="Email" type="email" placeholder="Điền email của bạn vào đây" required class="form-control" />
+          <input id="email" name="email" type="email" placeholder="Điền email của bạn vào đây" required class="form-control" />
         </div>
 
         <div class="form-group">
           <label for="name" id="name-label">Họ và tên</label>
-          <input id="name" name="Name" type="text" placeholder="Điền tên của bạn vào đây" required class="form-control" />
+          <input id="name" name="name" type="text" placeholder="Điền tên của bạn vào đây" required class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="name" >Ngành học của bạn:</label>
+          <input id="name" name="nganh" type="text" placeholder="Điền tên của bạn vào đây" required class="form-control" />
         </div>
 
         <div class="form-group">
           <p>Bạn là </p>
-          <select id="dropdown" name="Gender" class="form-control">
+          <select id="dropdown" name="gender" required class="form-control">
             <option value="">Lựa chọn giới tính của bạn:</option>
             <option value="Nam">Nam</option>
             <option value="Nu">Nữ</option>
@@ -54,7 +59,7 @@
           </label>
           <input
             id="number"
-            name="Namsinh"
+            name="namsinh"
             type="number"
             min="1990"
             max="2018"
@@ -75,7 +80,7 @@
 
         <div class="form-group">
           <p>Bạn là sinh viên khoá nào tại trường?</p>
-          <select id="dropdown" name="Khoahoc" class="form-control">
+          <select id="dropdown" name="khoahoc" class="form-control">
             <option value="">Select current role</option>
             <option value="K14">K14</option>
             <option value="K15">K15</option>
@@ -85,27 +90,29 @@
           </select>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" required class="form-control">
           <p>Câu hỏi cảu bạn là:</p>
-          <textarea class="text-input" name="Question" placeholder="Viết câu hỏi của bạn vào đây"></textarea>
+          <textarea class="text-input" name="question" placeholder="Viết câu hỏi của bạn vào đây"></textarea>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" required class="form-control">
           <p>Bạn muốn mình hỗ trợ điều gì?</p>
-          <label><input class="style-radio" type="radio" name="Loaihotro" value="giai_dap_thac_mac" checked />Hỗ trợ giải đáp thắc mắc.</label>
-          <label><input class="style-radio" type="radio" name="Loaihotro" value="CFS" />Viết CFS cho bản thân.</label>
-          <label><input class="style-radio" type="radio" name="Loaihotro" value="Support" />Góp ý cho đội ngũ Admin.</label>
+          <label><input class="style-radio" type="radio" name="loaihotro" value="giai_dap_thac_mac" checked />Hỗ trợ giải đáp thắc mắc.</label>
+          <label><input class="style-radio" type="radio" name="loaihotro" value="CFS" />Viết CFS cho bản thân.</label>
+          <label><input class="style-radio" type="radio" name="loaihotro" value="Gop_y_admin" />Góp ý cho đội ngũ Admin.</label>
+          <label><input class="style-radio" type="radio" name="loaihotro" value="Support" />Cần admin liên hệ giúp đỡ.</label>
         </div>
+
 
         <input id="submit" type="submit" value="Submit" class="btn-submit" >
-        <script type="text/javascript" src="./assets/js/main.js"></script> 
       </form>
     </div>
+    
 
     <footer>
-      <h1>Phát triển bởi đội ngũ IT của page "Câu chuyện Nhà Phen"</h1>
+      <h1>Phát triển bởi đội IT của page "Câu chuyện Nhà Phen"</h1>
       <center>
-        <img src="./assets/image/Nhanvatdaidien.png" style="width: 900px; height: 500px;">
+        <img src="./assets/image/Nhanvatdaidien.png" style="width: 20rem; height: 13rem;">
       </center>
     </footer>
   </body>
